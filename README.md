@@ -1,7 +1,7 @@
 # pjp
 PJP: Javascript Pre-processor | Module to make things easier for PHP developpers
 
-###Basic Setup
+### Basic Setup
 ```javascript
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -43,7 +43,7 @@ app.listen((!process.env.PORT ? 8080 : process.env.PORT), function(err){
 });
 ```
 
-###More set-up
+### More set-up
 
 \* -> Mandatory
 
@@ -154,7 +154,7 @@ app.listen((typeof process.env.PORT === "undefined" ? 8080 : process.env.PORT), 
 });
 ```
 
-###Features and things to know
+### Features and things to know
 At the beginning of a request's callback, put `let $ = req.serverFunctions;`.
 PHP -> PJP
 $\_SERVER -> $.\_SERVER
