@@ -50,16 +50,16 @@ app.listen((!process.env.PORT ? 8080 : process.env.PORT), function(err){
 ```javascript
 PEP(globalElement, bodyParserVerificationSkip, cookieParserVerificationSkip, expressFileUploadVerificationSkip, expressSessionVerificationSkip);K
 ```
-\*globalElement -> global
+\*globalElement -> global  
 (moduleName)VerificationSkip -> Default to false, if set to true it will skip verifying if module exists (Only skip if you named the middleware another way)
 
 ```javascript
 app.use(PEP.router(globalElement, ip, domainName));
 ```
 
-\*globalElement -> global
-\*ip -> Your IP Address (127.0.0.1 or local or public, depends what are you doing)
-domainName -> Your domain name if you have one, else don't put anything or put "localhost"
+\*globalElement -> global  
+\*ip -> Your IP Address (127.0.0.1 or local or public, depends what are you doing)  
+domainName -> Your domain name if you have one, else don't put anything or put "localhost"  
 
 ###Example
 
