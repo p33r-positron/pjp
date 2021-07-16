@@ -1,0 +1,21 @@
+{
+  "name": "pjp",
+  "version": "1.0.2",
+  "description": "PJP: JavaScript Preprocessor | Module to make things easier for PHP developpers",
+  "main": "index.js",
+  "scripts": {},
+  "author": "posicon",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p33r-positron/pjp.git"
+  },
+  "keywords": [
+    "php",
+    "pjp"
+  ],
+  "bugs": {
+    "url": "https://github.com/p33r-positron/pjp/issues"
+  },
+  "homepage": "https://github.com/p33r-positron/pjp#readme"
+}
