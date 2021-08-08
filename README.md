@@ -9,10 +9,10 @@ const cookieParser = require("cookie-parser");
 const expressFileUpload = require("express-fileupload");
 const expressSession = require("express-session");
 const path = require("path");
-const PEP = require("../PEP");
+const pjp = require("pjp");
 const app = express();
 
-PEP(global);
+pjp(global);
 
 app.use(bodyParser.urlencoded({
         "extended": true
@@ -30,9 +30,9 @@ app.use(expressFileUpload({
 app.use(expressSession({
         "secret": String(Math.floor(Math.random() * 100000000000)).concat(String(Date().now)), //You can replace it by your own secret, ex: "MyS3cR37"
         "cookie": {},
-        "name": "PEPSID"
+        "name": "PJPSID"
 }));
-app.use(PEP.router(global, "127.0.0.1", "localhost"));
+app.use(pjp.router(global, "127.0.0.1", "localhost"));
 
 //Actual code
 
@@ -48,13 +48,13 @@ app.listen((!process.env.PORT ? 8080 : process.env.PORT), function(err){
 \* -> Mandatory
 
 ```javascript
-PEP(globalElement, bodyParserVerificationSkip, cookieParserVerificationSkip, expressFileUploadVerificationSkip, expressSessionVerificationSkip);K
+pjp(globalElement, bodyParserVerificationSkip, cookieParserVerificationSkip, expressFileUploadVerificationSkip, expressSessionVerificationSkip);K
 ```
 \*globalElement -> global  
 (moduleName)VerificationSkip -> Default to false, if set to true it will skip verifying if module exists (Only skip if you named the middleware another way)
 
 ```javascript
-app.use(PEP.router(globalElement, ip, domainName));
+app.use(pjp.router(globalElement, ip, domainName));
 ```
 
 \*globalElement -> global  
@@ -70,10 +70,10 @@ const cookieParser = require("cookie-parser");
 const expressFileUpload = require("express-fileupload");
 const expressSession = require("express-session");
 const path = require("path");
-const PEP = require("../PEP");
+const pjp = require("pjp");
 const app = express();
 
-PEP(global);
+pjp(global);
 
 app.use(bodyParser.urlencoded({
 	"extended": true
@@ -91,9 +91,9 @@ app.use(expressFileUpload({
 app.use(expressSession({
 	"secret": String(Math.floor(Math.random() * 100000000000)).concat(String(Date().now)), //You can replace it by your own secret, ex: "MyS3cR37"
 	"cookie": {},
-	"name": "PEPSID"
+	"name": "pjpSID"
 }));
-app.use(PEP.router(global, "127.0.0.1"));
+app.use(pjp.router(global, "127.0.0.1"));
 
 app.get("/getMySourceCode", function(req, res){
 	if(!isset($._SERVER["PHP_AUTH_USER"]) || !isset($._SERVER["PHP_AUTH_PW"]))
@@ -148,7 +148,7 @@ app.listen((typeof process.env.PORT === "undefined" ? 8080 : process.env.PORT), 
 	}
 	else
 	{
-		console.log("Everything seems to work, welcome to PEP !");
+		console.log("Everything seems to work, welcome to pjp !");
     //I'm bad at writing documentations.
 	}
 });
