@@ -3,14 +3,14 @@ PJP: Javascript Pre-processor | Module to make things easier for PHP developpers
 
 ### Basic Setup
 ```javascript
-const express = require("express");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-const expressFileUpload = require("express-fileupload");
-const expressSession = require("express-session");
-const path = require("path");
+express = require("express");
+bodyParser = require("body-parser");
+cookieParser = require("cookie-parser");
+expressFileUpload = require("express-fileupload");
+expressSession = require("express-session");
+app = express();
+
 const pjp = require("pjp");
-const app = express();
 
 pjp(global);
 
@@ -64,14 +64,16 @@ domainName -> Your domain name if you have one, else don't put anything or put "
 ### Example
 
 ```javascript
-const express = require("express");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-const expressFileUpload = require("express-fileupload");
-const expressSession = require("express-session");
+express = require("express");
+bodyParser = require("body-parser");
+cookieParser = require("cookie-parser");
+expressFileUpload = require("express-fileupload");
+expressSession = require("express-session");
+app = express();
+
 const path = require("path");
 const pjp = require("pjp");
-const app = express();
+const fs = require("fs");
 
 pjp(global);
 
@@ -97,6 +99,7 @@ app.use(pjp.router(global, "127.0.0.1"));
 
 app.get("/getMySourceCode", function(req, res){
 	const $ = req.serverFunctions;
+	console.log(isset($._SERVER["PHP_AUTH_USER"]));
 	if(!isset($._SERVER["PHP_AUTH_USER"]) || !isset($._SERVER["PHP_AUTH_PW"]))
 	{
 		header("WWW-Authenticate: Basic realm=\"PJP Example Realm\"", res);
@@ -111,7 +114,7 @@ app.get("/getMySourceCode", function(req, res){
 				if(err)
 					console.log(err);
 				//Verifying if there is an error reading the file
-				res.send(data);
+				res.send(htmlspecialchars(data));
 			});
 			//Replace __filename by "index.html" (for example) to read a file
 			return;
