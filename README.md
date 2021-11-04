@@ -99,7 +99,6 @@ app.use(pjp.router(global, "127.0.0.1"));
 
 app.get("/getMySourceCode", function(req, res){
 	const $ = req.serverFunctions;
-	console.log(isset($._SERVER["PHP_AUTH_USER"]));
 	if(!isset($._SERVER["PHP_AUTH_USER"]) || !isset($._SERVER["PHP_AUTH_PW"]))
 	{
 		header("WWW-Authenticate: Basic realm=\"PJP Example Realm\"", res);
