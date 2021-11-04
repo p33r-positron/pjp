@@ -1,6 +1,6 @@
 const functions = {
 	"isset": function(value){
-		return (typeof value !== "undefined");
+		return (typeof value !== "undefined" && value !== '');
 	},
 	"htmlspecialchars": function(unsafeString){
 		if(typeof unsafeString !== "string")
@@ -47,9 +47,9 @@ const functions = {
 	"header": function(HTTPHeader, res){
 		if(typeof HTTPHeader !== "string")
 			throw new Error("TypeError: header expected a String as HTTPHeader, HTTPHeader type is ".concat(typeof HTTPHeader));
-		if(typeof req !== "object")
+		if(typeof res !== "object")
 			throw new Error("TypeError: header expected an Object as request, request type is".concat(typeof request));
-		let splitted = HTTPHeader.split(":")[0];
+		let splitted = HTTPHeader.split(":");
 		let headerName = splitted[0];
 		splitted.shift();
 		let headerValue = splitted.join(":");
