@@ -96,6 +96,7 @@ app.use(expressSession({
 app.use(pjp.router(global, "127.0.0.1"));
 
 app.get("/getMySourceCode", function(req, res){
+	const $ = req.serverFunctions;
 	if(!isset($._SERVER["PHP_AUTH_USER"]) || !isset($._SERVER["PHP_AUTH_PW"]))
 	{
 		header("WWW-Authenticate: Basic realm=\"PJP Example Realm\"", res);
@@ -123,7 +124,7 @@ app.get("/getMySourceCode", function(req, res){
 });
 
 app.get("/*", function(req, res){ // app.get("/*") means http://website/everything (except /getMySourceCode) with HTTP GET
-	let $ = req.serverFunctions;
+	const $ = req.serverFunctions;
 	if(isset($._GET["name"]))
 	{
 		res.echo("Your name is "+htmlspecialchars($._GET["name"]).concat(" !"));
